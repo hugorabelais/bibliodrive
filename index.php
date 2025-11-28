@@ -10,22 +10,43 @@
 </head>
 <body>
     <div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-9">
+		<div class="row" >
+			<div class="col-sm-12">
                 <?php
 					require_once("barre_recherche.php")
                 ?>
 			</div>
-			<div class="col-sm-3">
-					image Moulinsart
-			</div>
 		</div>
 		<div class="row">
-		   <div class="col-sm-9">
-					carroussel / résultat de la recherche / pages d'admin (ajout d'un livre)
+		   <div class="col-sm-9 img-fluid">
+					<?php
+						require_once('connexion.php');
+						$stmt = $connexion ->prepare("SELECT * from livre order by dateajout desc limit 3")	;
+						$stmt->setFetchMode(PDO::FETCH_OBJ);
+						$stmt->execute();
+						echo "<div id='carouselExample' class='carousel slide d-block w-25'>";
+						echo "<div class='carousel-inner'>";
+						while ($enregistrement = $stmt->fetch()){
+							echo "<div class='carousel-item active'>";
+							echo "<img src='images/". $enregistrement->photo . "' class='d-block w-100' alt='livre 1'>";
+							echo "</div>";
+						}
+					?>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-3">
-					formulaire de connexion / profil connecté (include)
+			<div class="col-sm-3" >
+				<?php
+					require_once("form_connexion.php")
+                ?>
 			</div>
 		</div>
 	</div>

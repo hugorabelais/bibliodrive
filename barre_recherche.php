@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,20 +9,21 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-9">
-                <b>La bibliothèque de moulinsart est fermée au public jusqu'a nouvel ordre. Mais il vous est possible de reserver et retirer vos livres via notre service Biblio Drive! </b>
+                <b>La bibliothèque de moulinsart est fermée au public jusqu'a nouvel ordre. <br/> Mais il vous est possible de reserver et retirer vos livres via notre service Biblio Drive! </b>
                 <div class="navbar navbar-light bg-light">
-                    <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="text" placeholder="recherche" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">recherche</button>
+                    <form action="lister_livres_auteur.php" class="form-inline" method="get">
+                        <input class="form-control mr-sm-2" type="text" placeholder="recherche" name="reponse" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >recherche</button>
                     </form>
                 </div>
             </div>
             <div class="col-sm-3">
-                <img src="petit_chateau.jpg" alt="chateau" width="auto" height="auto" >
+                <img src="petit_chateau.jpg" alt="chateau" width="200" height="160" style="float:right">
             </div>
         </div>
     </div>    
