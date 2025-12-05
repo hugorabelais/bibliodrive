@@ -24,7 +24,7 @@
 						$stmt = $connexion ->prepare("SELECT * from livre order by dateajout desc limit 3")	;
 						$stmt->setFetchMode(PDO::FETCH_OBJ);
 						$stmt->execute();
-						echo "<div id='carouselExample' class='carousel slide d-block w-25'>";
+						echo "<div id='carouselExample' class='carousel slide d-block w-25' >";
 						echo "<div class='carousel-inner'>";
 						while ($enregistrement = $stmt->fetch()){
 							echo "<div class='carousel-item active'>";
