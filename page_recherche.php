@@ -19,7 +19,6 @@
                 </div>
                 <div class="row">
                       <div class="col-sm-9">
-                      <!-- <div class="col-sm-9 img-fluid"> -->
                                 <?php
                                     $reponse = $_GET["reponse"];
                                     require_once('connexion.php');
