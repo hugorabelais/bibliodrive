@@ -8,14 +8,14 @@
 
 </head>
 
-    <form>
+    <form method="post">
   <div class="form-group">
     <label>nom d'utlisateur</label>
-    <input type="email" class="form-control" id="nom_utlisateur" placeholder="entrez identifiant">
+    <input type="email" class="form-control" name="nom_utlisateur" placeholder="entrez identifiant">
   </div>
   <div class="form-group">
     <label>mot de passe</label>
-    <input type="password" class="form-control" id="mot_de_passe" placeholder="entrez mot de passe">
+    <input type="password" class="form-control" name="mot_de_passe" placeholder="entrez mot de passe">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

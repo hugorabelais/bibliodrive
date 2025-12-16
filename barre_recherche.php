@@ -1,5 +1,7 @@
 
-
+<?php 
+session_start();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +24,8 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <img src="petit_chateau.jpg" alt="chateau" width="200"  style="float:right">
+                <a href="http://localhost/bibliodrive"><img src="petit_chateau.jpg" alt="chateau" width="200"  style="float:right"></a>
+                
             </div>
         </div>
     </div>    
