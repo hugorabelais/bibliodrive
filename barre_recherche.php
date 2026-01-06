@@ -21,6 +21,7 @@ session_start();
                         <input class="form-control mr-sm-2" type="text" placeholder="recherche" name="reponse" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >recherche</button>
                     </form>
+                    <a href="http://localhost/bibliodrive/panier.php"> <button type="button" class="btn btn-primary" href="">panier</button> </a>
                 </div>
             </div>
             <div class="col-sm-3">

@@ -1,4 +1,3 @@
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +10,7 @@
 
 if (!isset($_SESSION["mel"])) { 
     if (!isset($_POST['btnconnexion'])) { 
+        $_SESSION['profil']=""
         ?> 
         <form method="post" action="index.php"> 
             <h5>votre mail:</h5><input name="mel" class="form-control" type="text">

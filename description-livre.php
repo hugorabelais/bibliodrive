@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>connexion user</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</head>
-<body>
+
 
         <div class="container-fluid">
                 <div class="row" >
@@ -26,28 +17,75 @@
                             $stmt->bindValue(":pnumero", $reponse);
                             $stmt->setFetchMode(PDO::FETCH_OBJ);
                             $stmt->execute();
-                            $enregistrement = $stmt->fetch(); 
-                            echo "<b>Auteur : ".$enregistrement->nom. " ". $enregistrement->prenom."</br></b>" ;
-                            echo "<b>ISBN13 : ".$enregistrement->isbn13."</br></b>";
+                            $livre = $stmt->fetch(); 
+                            $_SESSION['TitreLivre'] = $livre->titre;
+                                $_SESSION['PrenomAuteur'] = $livre->prenom;
+                                $_SESSION['NomAuteur'] = $livre->nom;
+                                $_SESSION['isbnLivre'] = $livre->isbn13;
+                                $_SESSION['DetailLivre'] = $livre->detail;
+                                $_SESSION['PhotoLivre'] = $livre->photo;
+                                $_SESSION['nolivre'] = $livre->nolivre;
+                                $_SESSION['anneeparution'] = $livre->anneeparution;
+                            echo "<b>Auteur : ".$livre->nom. " ". $livre->prenom."</br></b>" ;
+                            echo "<b>ISBN13 : ".$livre->isbn13."</br></b>";
                             echo "<b>Résumer du livre</br></br></br></b>";
-                            echo "<b>".$enregistrement->detail."</br></br></br></b>";
-                            $stmt = $connexion ->prepare("SELECT dateretour from emprunter where dateretour is null and nolivre=:pnumero order by dateemprunt desc limit 1" );
-                            $stmt->bindValue(":pnumero", $reponse);
-                            $stmt->setFetchMode(PDO::FETCH_OBJ);
-                            $stmt->execute();
-                            $enregistrement2 = $stmt->fetch();
-                                if (!isset($enregistrement2))
-                                {
-                                        echo "<b>disponible</b>";
-                                }
-                                echo "<b class='text.primary'>vous devez avoir un compte pour reservez le livre </b>";
+                            echo "<b>".$livre->detail."</br></br></br></b>";
+                        $stmt = $connexion->prepare("SELECT * FROM emprunter where emprunter.nolivre = :nolivre order by dateemprunt desc");
+                        $stmt->bindValue(":nolivre", $reponse); 
+                        $stmt->setFetchMode(PDO::PARAM_INT);
+                        $stmt->execute();
+                        $dispo = $stmt->fetch();
+                        if (($_SESSION['profil'] == "" && ($dispo && $dispo->dateretour != NULL )) || ($_SESSION['profil'] == "")&&(!$dispo)){
+                                echo '<b class="text-success">disponible</b>
+                                <b class="text-danger"> vous devez être connecté pour réservez</b>
+                                ';
+                        }
+                        elseif (($_SESSION['profil'] == "" && $dispo && $dispo->dateretour == NULL ) || ($_SESSION['profil'] == "")&&(!$dispo)) {
+                                 echo '<b class="text-danger">indisponible</b>
+                                <b class="text-danger"> vous devez être connecté pour réservez</b>
+                                ';
+                        }
+                                    if (($_SESSION['profil'] == "client" && $dispo && $dispo->dateretour != NULL ) || ($_SESSION['profil'] == "client")&&(!$dispo)){
+                echo '<div>
+                            DISPONIBLE    
+                            <form action="" method="post" >
+                            <input type="submit" class="btn btn-outline-success" name="btnPanier" value="Ajouter au panier" >
+                        </form>
+                      </div>
+                      ';      
+                $dansLePanier = False;
+                for($x = 0; $x < count($_SESSION['panier']); $x++){
+                        if ($_SESSION['panier'][$x] == $_SESSION['TitreLivre']){
+                            $dansLePanier = True;
+                        }
+                            
+                    }
 
+                if (isset($_POST['btnPanier']) && $dansLePanier == False && (count($_SESSION['panier'])<6)){
+
+                    $_SESSION['panier'][] = array($_SESSION['nolivre'] ,$_SESSION['PrenomAuteur'], $_SESSION['NomAuteur'], $_SESSION['TitreLivre'], $_SESSION['anneeparution']);
+                    echo 'Livre ajouté au panier !';
+                    
+                }
+                elseif (isset($_POST['btnPanier']) && $dansLePanier == True) {
+                        echo 'Le livre est déjà dans le panier !';
+                }
+                elseif (isset($_POST['btnPanier']) && count($_SESSION['panier'])>5) {
+                        echo 'Le panier est plein, vous ne pouvez plus y ajouter de livre !';
+                }
+                
+                         
+            }
+            elseif (($_SESSION['profil'] == "client" && $dispo && $dispo->dateretour == NULL ) || ($_SESSION['profil'] == "client")&&(!$dispo)) {
+                echo '<div>
+                            indisponible
+                      </div>
+                          ';
+            }
                         echo "</div>";
                         echo "<div class='col-sm-3'>";
-                            echo "<img src='images/". $enregistrement->photo. "' alt='image livre' height='400' width='300'>" ;
+                        echo "<img src='images/". $livre->photo. "' alt='image livre' height='400' width='300'>" ;
                         echo "</div>";
-
-
                             ?>
 
                       <div class="col-sm-3" >
