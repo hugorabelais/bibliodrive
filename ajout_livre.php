@@ -10,7 +10,7 @@
 		<div class="row">
 		   <div class="col-sm-9 img-fluid">
                 <?php
-                require_once('connexionbase.php');
+                require_once('connexion.php');
 
                 $noauteur = $_POST['auteur'];
                 $titre = $_POST['titre'];
