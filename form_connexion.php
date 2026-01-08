@@ -7,13 +7,21 @@
 
 </head>
 <?php
+if (isset($_SESSION["vara"]) && $_SESSION["vara"]=== 1) {
+    if ($_SESSION["profil"] === "admin") {
+        header ("Location: http://localhost/bibliodrive/acceuil_admin.php"); 
+        $_SESSION["vara"]= 0;
+    }elseif ($_SESSION["profil"] === "client"){
+        header ("Location: http://localhost/bibliodrive/"); 
+        $_SESSION["vara"]= 0;
+}}
 
 if (!isset($_SESSION["mel"])) { 
     if (!isset($_POST['btnconnexion'])) { 
         $_SESSION['profil']="";
         $_SESSION['panier'] = "";
         ?> 
-        <form method="post"> 
+        <form method="post" action=""> 
             <h5>votre mail:</h5><input name="mel" class="form-control" type="text">
             <h5>votre Mot de passe:</h5><input name="motdepasse" class="form-control" type="password">
             <div class="text-center">
@@ -21,6 +29,7 @@ if (!isset($_SESSION["mel"])) {
                 <br>
                 <br>
             </div>
+            <?php $_SESSION["vara"]= 1 ?>
         </form>
         <?php
     } else {
@@ -47,12 +56,6 @@ if (!isset($_SESSION["mel"])) {
             $_SESSION['panier'] = $panier;
             $_SESSION['posLibre'] = 0;
 
-            if ($_SESSION["profil"] === "admin") {
-                header ("Location: http://localhost/bibliodrive/acceuil_admin.php"); 
-            } else {
-                header ("Location: http://localhost/bibliodrive/"); 
-            }
-            exit();
         } else { 
             echo'<form method="post" action="index.php"> 
             <h5>votre mail:</h5><input name="mel" class="form-control" type="text">
