@@ -19,13 +19,13 @@
 			</div>
 		</div>
 		<div class="row">
-		   <div class="col-sm-9 img-fluid">
+		   <div class="col-sm-9 img-fluid text-center">
 					<?php
 						require_once('connexion.php');
 						$stmt = $connexion ->prepare("SELECT * from livre order by dateajout desc limit 3")	;
 						$stmt->setFetchMode(PDO::FETCH_OBJ);
 						$stmt->execute();
-						echo "<div id='carouselExample' class='carousel slide d-block w-25' class='texteCentrer'>";
+						echo "<div id='carouselExample' class='carousel slide d-block w-25' class='text_centrer'>";
 						echo "<div class='carousel-inner'>";
 						while ($enregistrement = $stmt->fetch()){
 							echo "<div class='carousel-item active'>";

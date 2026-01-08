@@ -3,7 +3,7 @@
 		<div class="row" >
 			<div class="col-sm-12">
                 <?php
-					require_once("barre_recherche.php")
+					require_once("entete_admin.php")
                 ?>
 			</div>
 		</div>

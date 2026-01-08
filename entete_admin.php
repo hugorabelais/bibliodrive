@@ -31,19 +31,11 @@ session_start();
                             <a class="nav-link" href="http://localhost/bibliodrive/acceuil_admin.php">accueil</a>
                         </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/bibliodrive/nouveau_membre.php">Ajouter un membre</a>
+                        <a class="nav-link" href="http://localhost/bibliodrive/page_nouveau_membre.php">Ajouter un membre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/bibliodrive/ajout_livre.php">Ajouter un livre</a>
+                        <a class="nav-link" href="http://localhost/bibliodrive/page_nouveau_livre.php">Ajouter un livre</a>
                     </li>
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/bibliodrive/supprimer_membre.php">Supprimer un membre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/bibliodrive/suprimer_livre.php">Supprimer un livre</a>
-                    </li>
-                    -->
                     </ul>
                 </div>
             </nav>
@@ -53,7 +45,7 @@ session_start();
         </div>
 
         <div class="col-md-2 container-fluid">
-             <a href="http://localhost/bibliodrive"><img src="./image/chateauMoulinsart.jpg" class="float-end" width="100%"></a>
+             <a href="http://localhost/bibliodrive"><img src="petit_chateau.jpg" class="float-end" width="100%"></a>
         </div>
     </div>
     

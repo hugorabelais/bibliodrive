@@ -3,7 +3,7 @@
     ?>
 
     <?php
-        require_once('connexionbase.php');
+        require_once('connexion.php');
 
         $mel = $_POST['mel'];
         $motdepasse = $_POST['motdepasse'];

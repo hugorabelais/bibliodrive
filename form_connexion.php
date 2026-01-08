@@ -13,7 +13,7 @@ if (!isset($_SESSION["mel"])) {
         $_SESSION['profil']="";
         $_SESSION['panier'] = "";
         ?> 
-        <form method="post" action="index.php"> 
+        <form method="post"> 
             <h5>votre mail:</h5><input name="mel" class="form-control" type="text">
             <h5>votre Mot de passe:</h5><input name="motdepasse" class="form-control" type="password">
             <div class="text-center">
@@ -48,9 +48,9 @@ if (!isset($_SESSION["mel"])) {
             $_SESSION['posLibre'] = 0;
 
             if ($_SESSION["profil"] === "admin") {
-                require_once ("accueil_admin.php"); 
+                header ("Location: http://localhost/bibliodrive/acceuil_admin.php"); 
             } else {
-                require_once ("index.php"); 
+                header ("Location: http://localhost/bibliodrive/"); 
             }
             exit();
         } else { 
@@ -75,13 +75,13 @@ if (!isset($_SESSION["mel"])) {
     <h3 class="text-center"><?php echo $_SESSION["adresse"]; ?></h3>
     <h3 class="text-center"><?php echo $_SESSION["codepostal"] . ', ' . $_SESSION["ville"]; ?></h3>
     
-    <?php if ($_SESSION["profil"] === "client"): ?>
-        <br><h4 class="text-center">Bienvenue client </h4>
-    <?php endif; ?>
+    <?php if ($_SESSION["profil"] === "client"){ 
+        echo '<br><h4 class="text-center">Bienvenue client </h4>';
+     } 
     
-    <?php if ($_SESSION["profil"] === "admin"): ?>
-        <br><h4 class="text-center">Bienvenue administrateur </h4>
-    <?php endif; ?>
+     if ($_SESSION["profil"] === "admin") {
+        echo '<br><h4 class="text-center">Bienvenue administrateur </h4>' ;
+    } ?>
     
     <?php if (!isset($_POST['deco'])) { ?>
     <form method="post">

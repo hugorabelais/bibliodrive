@@ -4,7 +4,7 @@
 
 <div class="row container-fluid">
     <div class="col-md-10 texteCentrer">
-        <form action="AjoutMembreBase.php" method="post">
+        <form action="nouveau_membre.php" method="post">
             
             Mail : <input type="text" name="mel">
             <br><br> 
@@ -26,9 +26,12 @@
 
         </form>
     </div>
+    <div class="col-sm-3" >
     <?php
         include_once 'form_connexion.php';
     ?>
+    </div>
+</div>
 
 </body>
 </html>
