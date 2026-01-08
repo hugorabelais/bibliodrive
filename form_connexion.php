@@ -10,7 +10,8 @@
 
 if (!isset($_SESSION["mel"])) { 
     if (!isset($_POST['btnconnexion'])) { 
-        $_SESSION['profil']=""
+        $_SESSION['profil']="";
+        $_SESSION['panier'] = "";
         ?> 
         <form method="post" action="index.php"> 
             <h5>votre mail:</h5><input name="mel" class="form-control" type="text">
@@ -42,7 +43,9 @@ if (!isset($_SESSION["mel"])) {
             $_SESSION["codepostal"] = $enregistrement->codepostal;
             $_SESSION["ville"] = $enregistrement->ville;
             $_SESSION["profil"] = $enregistrement->profil;
-
+            $panier = array();
+            $_SESSION['panier'] = $panier;
+            $_SESSION['posLibre'] = 0;
 
             if ($_SESSION["profil"] === "admin") {
                 require_once ("accueil_admin.php"); 

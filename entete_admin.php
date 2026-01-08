@@ -1,0 +1,64 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="CSS.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+
+    <div class="row container-fluid">
+        <div class="col-md-10">
+            <p>
+                La Bibliothèque de Moulinsart est fermée au public jusqu'à nouvel ordre. 
+                Mais il vous est possible de réserver et retirer vos livres via notre service Biblio Drive
+            </p>
+            <br>
+
+            <nav class="navbar navbar-expand-sm bg-light ">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        <li class="nav-item " >
+                            <a class="nav-link" href="http://localhost/bibliodrive/acceuil_admin.php">accueil</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/bibliodrive/nouveau_membre.php">Ajouter un membre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/bibliodrive/ajout_livre.php">Ajouter un livre</a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/bibliodrive/supprimer_membre.php">Supprimer un membre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost/bibliodrive/suprimer_livre.php">Supprimer un livre</a>
+                    </li>
+                    -->
+                    </ul>
+                </div>
+            </nav>
+
+
+
+        </div>
+
+        <div class="col-md-2 container-fluid">
+             <a href="http://localhost/TP-BIBLIODRIVE/acceuille.php"><img src="./image/chateauMoulinsart.jpg" class="float-end" width="100%"></a>
+        </div>
+    </div>
+    
+<br>
+
+
+
+
