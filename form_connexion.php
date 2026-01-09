@@ -7,6 +7,7 @@
 
 </head>
 <?php
+
 if (isset($_SESSION["vara"]) && $_SESSION["vara"]=== 1) {
     if ($_SESSION["profil"] === "admin") {
         header ("Location: http://localhost/bibliodrive/acceuil_admin.php"); 
@@ -55,6 +56,7 @@ if (!isset($_SESSION["mel"])) {
             $panier = array();
             $_SESSION['panier'] = $panier;
             $_SESSION['posLibre'] = 0;
+
 
         } else { 
             echo'<form method="post" action="index.php"> 

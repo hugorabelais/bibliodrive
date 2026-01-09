@@ -22,7 +22,7 @@
                                 </div>
                                 <br><br>
                                 <div class="col-md-3">
-                                    <a href="http://localhost/bibliodrive/supprimer_livre.php?sup='.$_SESSION['panier'][$x][0].'"> <input type="submit" class="btn btn-outline-danger" value="supprimer" > </a>
+                                    <a href="http://localhost/bibliodrive/supprimerLivre.php?sup='.$_SESSION['panier'][$x][0].'"> <input type="submit" class="btn btn-outline-danger" value="supprimer" > </a>
                                 </div>
                             </div>
                             ';               

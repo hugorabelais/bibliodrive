@@ -3,7 +3,7 @@
 ?>
 
 <div class="row container-fluid">
-    <div class="col-md-9 texteCentrer">
+    <div class="col-sm-9 texteCentrer">
         
         <form action="ajout_livre.php" method="post">
 

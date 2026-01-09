@@ -27,8 +27,14 @@
 						$stmt->execute();
 						echo "<div id='carouselExample' class='carousel slide d-block w-25' class='text_centrer'>";
 						echo "<div class='carousel-inner'>";
-						while ($enregistrement = $stmt->fetch()){
+						
+						if ($enregistrement = $stmt->fetch()){
 							echo "<div class='carousel-item active'>";
+							echo "<img src='images/". $enregistrement->photo . "' class='d-block w-100' alt='livre 1'>";
+							echo "</div>";
+						}
+						while ($enregistrement = $stmt->fetch()){
+							echo "<div class='carousel-item '>";
 							echo "<img src='images/". $enregistrement->photo . "' class='d-block w-100' alt='livre 1'>";
 							echo "</div>";
 						}
