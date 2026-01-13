@@ -48,7 +48,7 @@
             }
             
             if (isset($_POST['supprimer'])){
-                echo 'AAAAAAAAA';
+                require_once("supprimeLivre.php");
             }
         ?>
 			</div>

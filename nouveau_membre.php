@@ -1,8 +1,8 @@
     <?php
-        include 'entete_admin.php';
-    ?>
+if ($_SESSION['profil']=='admin') {
 
-    <?php
+        include 'entete_admin.php';
+
         require_once('connexion.php');
 
         $mel = $_POST['mel'];
@@ -14,8 +14,9 @@
         $codepostal = $_POST['codepostal'];
         $profil = $_POST['profil'];
 
-        $sql = "INSERT INTO utilisateur (mel, motdepasse, nom, prenom, adresse, ville, codepostal, profil) VALUES (:mel, :motdepasse, :nom, :prenom, :adresse, :ville, :codepostal, :profil)";
-        $stmt = $connexion->prepare($sql);
+        $sql = "INSERT INTO utilisateur (mel, motdepasse, nom, prenom, adresse, ville, codepostal, profil) VALUES (:mel, MD5(:motdepasse), :nom, :prenom, :adresse, :ville, :codepostal, :profil)";
+        $stmt = $connexion->
+        prepare($sql);
 
         $stmt->bindValue(":mel", $mel); 
         $stmt->bindValue(":motdepasse", $motdepasse);
@@ -39,6 +40,10 @@
 
     <?php
         include 'form_connexion.php';
+}
+        else {
+	header ("Location: http://localhost/bibliodrive/"); 
+}
     ?>
         
 </div>

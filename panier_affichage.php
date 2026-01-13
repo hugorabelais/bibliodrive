@@ -3,7 +3,7 @@
 ?>
 
 <div class="row container-fluid"> 
-    <div class="col-md-10 container-fluid texteCentrer">  
+    <div class="col-md-9 container-fluid texteCentrer">  
         <h2> Votre panier </h2>
         
         <?php
@@ -57,7 +57,10 @@
         ?>
     
     </div>
+    <div class="col-md-3 ">
     <?php
-    require_once 'blocIdentification.php';
+    require_once 'form_connexion.php';
     ?>
+    </div>
+</div>
 

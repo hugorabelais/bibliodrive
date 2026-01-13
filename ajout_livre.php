@@ -1,14 +1,15 @@
+
 <body>
     <div class="container-fluid">
 		<div class="row" >
 			<div class="col-sm-12">
                 <?php
-					require_once("barre_recherche.php")
-                ?>
+					require_once("barre_recherche.php");
+                    if ($_SESSION['profil']==='admin') {
+	?>
 			</div>
 		</div>
-		<div class="row">
-		   <div class="col-sm-9 img-fluid">
+		   <div>
                 <?php
                 require_once('connexion.php');
 
@@ -39,17 +40,21 @@
             
                 
             ?>
+            </div>
+            <div class="row container-fluid">
+                <div class="col-md-9 texteCentrer">
+                    <h3> le livre à bien été ajouté !</h3>
+                </div>
 
-    <div class="row container-fluid">
-        <div class="col-md-10 texteCentrer">
-            <h3> le livre à bien été ajouté !</h3>
-        </div>
-
-			</div>
-			<div class="col-sm-3" >
-				<?php
-					require_once("form_connexion.php")
-                ?>
-			</div>
-		</div>
+                    <div class="col-sm-3" >
+                        <?php
+                            require_once("form_connexion.php")
+                        ?>
+                    </div>
+            </div>
 	</div>
+    <?php 
+}
+    else {
+        header ("Location: http://localhost/bibliodrive/"); 
+    }

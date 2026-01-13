@@ -25,8 +25,33 @@ session_start();
                 </div>
             </div>
             <div class="col-sm-3">
-                <a href="http://localhost/bibliodrive"><img src="petit_chateau.jpg" alt="chateau" width="200"  style="float:right"></a>
-                
+                <a href="http://localhost/bibliodrive"><img src="petit_chateau.jpg" alt="chateau" width="200"  style="float:right"></a>   
             </div>
         </div>
+        <div class="row">
+            <?php 
+            if (isset ($_SESSION['profil'])){
+                if ($_SESSION['profil']==="admin"){
+                    ?>
+                <nav class="navbar navbar-expand-sm bg-light ">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav">
+                            <li class="nav-item " >
+                                <a class="nav-link" href="http://localhost/bibliodrive/index.php">accueil</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost/bibliodrive/page_nouveau_membre.php">Ajouter un membre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost/bibliodrive/page_nouveau_livre.php">Ajouter un livre</a>
+                        </li>
+                        </ul>
+                    </div>
+                </nav>
+            
+            <?php
+            }
+        }
+            ?>
+
     </div>    

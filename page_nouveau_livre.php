@@ -1,5 +1,6 @@
 <?php
-    include 'entete_admin.php'
+    include 'barre_recherche.php';
+    if ($_SESSION['profil'] ==="admin") {
 ?>
 
 <div class="row container-fluid">
@@ -11,7 +12,7 @@
                     <?php
                         require_once('connexion.php');   
 
-                        $stmt = $connexion->prepare("SELECT DISTINCT(nom), noauteur FROM auteur");
+                        $stmt = $connexion->prepare("SELECT nom, noauteur FROM auteur");
                         $stmt->setFetchMode(PDO::FETCH_OBJ);
                         $stmt->execute();
                         
@@ -27,9 +28,9 @@
             <br><br> 
             Titre : <input type="txt" name="titre">
             <br><br> 
-            ISBN : <input type="txt" name="isbn">
+            ISBN : <input type="number" name="isbn">
             <br><br> 
-            Année de parution : <input type="txt" name="anneeparution">
+            Année de parution : <input type="date" name="anneeparution">
             <br><br> 
             Résumé : <input type="txt" name="detail">
             <br><br> 
@@ -42,6 +43,10 @@
     <div class="col-sm-3" >
     <?php
         include_once 'form_connexion.php';
+            echo '</div>
+</div>';
+}
+        else {
+	header ("Location: http://localhost/bibliodrive/"); 
+}
     ?>
-    </div>
-</div>

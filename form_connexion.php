@@ -7,30 +7,19 @@
 
 </head>
 <?php
-
-if (isset($_SESSION["vara"]) && $_SESSION["vara"]=== 1) {
-    if ($_SESSION["profil"] === "admin") {
-        header ("Location: http://localhost/bibliodrive/acceuil_admin.php"); 
-        $_SESSION["vara"]= 0;
-    }elseif ($_SESSION["profil"] === "client"){
-        header ("Location: http://localhost/bibliodrive/"); 
-        $_SESSION["vara"]= 0;
-}}
-
-if (!isset($_SESSION["mel"])) { 
+if (!isset($_SESSION["mel"])) {
     if (!isset($_POST['btnconnexion'])) { 
         $_SESSION['profil']="";
         $_SESSION['panier'] = "";
         ?> 
-        <form method="post" action=""> 
-            <h5>votre mail:</h5><input name="mel" class="form-control" type="text">
+        <form method="post" action="index.php"> 
+            <h5>votre mail:</h5><input name="mel" class="form-control" type="email">
             <h5>votre Mot de passe:</h5><input name="motdepasse" class="form-control" type="password">
             <div class="text-center">
                 <input type="submit" class="btn btn-success" name="btnconnexion" value="Connexion">
                 <br>
                 <br>
             </div>
-            <?php $_SESSION["vara"]= 1 ?>
         </form>
         <?php
     } else {
@@ -56,23 +45,23 @@ if (!isset($_SESSION["mel"])) {
             $panier = array();
             $_SESSION['panier'] = $panier;
             $_SESSION['posLibre'] = 0;
-
-
         } else { 
             echo'<form method="post" action="index.php"> 
-            <h5>votre mail:</h5><input name="mel" class="form-control" type="text">
+            <h5>votre mail:</h5><input name="mel" class="form-control" type="email">
             <h5>votre Mot de passe:</h5><input name="motdepasse" class="form-control" type="password">
             <div class="text-center">
                 <input type="submit" class="btn btn-success" name="btnconnexion" value="Connexion">
                 <br>
                 <br>
             </div>
-        </form>';
-            echo "Echec de la connexion.";
-            exit();
+        </form>'
+            ;
         }
     }
-} else {
+}
+
+
+else {
     ?>
     <h3 class="text-center"><?php echo $_SESSION["prenom"] . ' ' . $_SESSION["nom"]; ?></h3>
     <h3 class="text-center "><?php echo $_SESSION["mel"]; ?></h3>
@@ -89,18 +78,16 @@ if (!isset($_SESSION["mel"])) {
     } ?>
     
     <?php if (!isset($_POST['deco'])) { ?>
-    <form method="post">
+    <form method="post" action="index.php">
         <div class="input-group-btn text-center">
-            <button class="btn btn-danger" name="deco" type="submit">Déconnexion</button>
+            <button class="btn btn-danger" name="deco" type="submit" >Déconnexion</button>
         </div>
     </form>
     <?php } else {
         session_unset();         
         session_destroy();
-        require_once ("index.php");
-        exit();
+        $_SESSION['profil']= "";
     }
 } 
-
 ob_end_flush();
 ?>
