@@ -47,6 +47,6 @@
 </div>';
 }
         else {
-	header ("Location: http://localhost/bibliodrive/"); 
+	header ("Location: http://localhost/bibliodrive/index.php"); 
 }
     ?>
